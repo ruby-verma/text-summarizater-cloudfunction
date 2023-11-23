@@ -36,7 +36,7 @@ Assuming that you have a copy of this project on your local machine with `gcloud
 3. Provide the following command:
 
    ```bash
-   gcloud functions deploy vertex-ai-function \
+   gcloud functions deploy text-summarizer-function \
    --gen2 \
    --runtime=python311 \
    --region=$GCP_REGION \
@@ -53,7 +53,7 @@ Assuming that you have a copy of this project on your local machine with `gcloud
 Since this Cloud Function is deployed with a HTTP trigger, you can directly invoke it. Sample calls are shown below:
 
 ```bash
-curl -m 70 -X POST https://$GCP_REGION-$GCP_PROJECT.cloudfunctions.net/vertex-ai-function \
+curl -m 70 -X POST https://$GCP_REGION-$GCP_PROJECT.cloudfunctions.net/text-summarizer-function \
 -H "Content-Type: application/json" \
 -d '{
   "inputText": "Vipassana is an ancient mindfulness meditation technique. It involves observing your thoughts and emotions as they are, without judging or dwelling on them. Though more studies are needed, research to date has found that Vipassana can reduce stress and anxiety, which may have benefits for substance use."
