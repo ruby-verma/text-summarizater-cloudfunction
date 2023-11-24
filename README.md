@@ -1,19 +1,19 @@
 # Cloud Function to do the text summarization using Google Cloud Vertex AI
 
-This application demonstrates a Cloud Function written in Python that initializes the Vertex AI module and then provides an endpoint to invoke PaLM Text Bison model for text summarization.
+This application demonstrates a Cloud Function written in Python that initializes the Vertex AI module and then provides an endpoint to invoke PaLM 2 Text Bison model for text summarization.
 
 > NOTE:
-> 1. Before you move forward, ensure that you have Signed-in to the [Google Cloud Console](http://console.cloud.google.com/) and created a new project. You can reuse the existing project as well. If you don't already have a Gmail or Google Workspace account, you must [create one](https://accounts.google.com/SignUp).
-> 2. Enable billing in the Cloud Console to use Cloud resources/APIs. New Google Cloud users are eligible for the $300 USD Free Trial program.
+> 1. Before you move forward, ensure that you have Signed-in to the [Google Cloud Console](http://console.cloud.google.com/) and created a new project. You can reuse the existing project as well. You need to [create an account](https://accounts.google.com/SignUp) if you don't already have one for Gmail.
+> 2. To use Cloud resources/APIs, you must [enable billing](https://medium.com/r/?url=https%3A%2F%2Fconsole.cloud.google.com%2Fbilling) in the Cloud Console. Users who are new to Google Cloud are eligible for the $300 USD Free Trial offer.
 
 ## Environment variables required
 
 Your Cloud Function requires access to two environment variables:
 
-- `GCP_PROJECT` : This is the Google Cloud Project Id.
-- `GCP_REGION` : This is the region in which you are deploying your Cloud Function. For e.g. us-central1.
+- `GCP_PROJECT` : This is your project Project ID.
+- `GCP_REGION` : This is the region where your Cloud Function will be deployed. For e.g., us-central1.
 
-These variables are needed since the Vertex AI initialization needs the Google Cloud Project Id and the region. The specific code line from the `main.py` function is shown here:
+These variables are required for the Vertex AI initialization. The specific code line from the `main.py` function is shown here:
 `vertexai.init(project=PROJECT_ID, location=LOCATION)`
 
 In Cloud Shell, execute the following commands:
@@ -50,7 +50,7 @@ Assuming that you have a copy of this project on your local machine with `gcloud
 
 ## Invoking the Cloud Function
 
-Since this Cloud Function is deployed with a HTTP trigger, you can directly invoke it. Sample calls are shown below:
+You can call this Cloud Function directly because it is deployed with an HTTP trigger. Sample calls are shown below:
 
 ```bash
 curl -m 70 -X POST https://$GCP_REGION-$GCP_PROJECT.cloudfunctions.net/text-summarizer-function \
