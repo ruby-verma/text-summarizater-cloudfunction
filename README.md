@@ -14,7 +14,7 @@ Your Cloud Function requires access to two environment variables:
 - `GCP_REGION` : This is the region where your Cloud Function will be deployed. For e.g., asia-south1.
 
 These variables are required for the Vertex AI initialization. The specific code line from the `main.py` function is shown here:
-`vertexai.init(project=PROJECT_ID, location=LOCATION)`
+`vertexai.init(project=PROJECT_ID)`
 
 In Cloud Shell, execute the following commands:
 ```bash
