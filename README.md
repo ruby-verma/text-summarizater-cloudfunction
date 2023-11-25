@@ -41,7 +41,7 @@ Assuming that you have a copy of this project on your local machine with `gcloud
    --runtime=python311 \
    --region=$GCP_REGION \
    --source=. \
-   --entry-point=textSummarizer \
+   --entry-point=text_summarizer \
    --set-env-vars=GCP_PROJECT=$GCP_PROJECT,GCP_REGION=$GCP_REGION \
    --trigger-http \
    --allow-unauthenticated \
