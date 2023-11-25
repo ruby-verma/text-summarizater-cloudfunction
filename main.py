@@ -20,7 +20,7 @@ LOCATION = os.environ.get('GCP_REGION','-')
 
 # Define an HTTP function using the functions_framework library
 @functions_framework.http
-def textSummarizer(request):
+def text_summarizer(request):
     request_json = request.get_json(silent=True)
 
     if request_json and 'inputText' in request_json:
