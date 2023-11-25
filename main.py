@@ -9,13 +9,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import os
 import functions_framework  # Import the functions_framework library for HTTP functions
 import vertexai  # Import the vertexai library for AI model handling
 from vertexai.preview.language_models import TextGenerationModel  # Import the TextGenerationModel from vertexai
 import json  # Import the JSON library for working with JSON data
 
-PROJECT_ID = "codevipassanacodelab1"
+PROJECT_ID  = os.environ.get('GCP_PROJECT','-')
+LOCATION = os.environ.get('GCP_REGION','-')
 
 # Define an HTTP function using the functions_framework library
 @functions_framework.http
@@ -26,7 +27,7 @@ def textSummarizer(request):
         inputText = request_json['inputText']
         print(f"Received request for inputText: {inputText}")
 
-        vertexai.init(project=PROJECT_ID)
+        vertexai.init(project=PROJECT_ID, location=LOCATION)
         model = TextGenerationModel.from_pretrained("text-bison@001")
         parameters = {
             "temperature": 0.2, # Control the randomness of the generated text
