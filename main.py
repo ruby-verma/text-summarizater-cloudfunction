@@ -25,9 +25,12 @@ def text_summarizer(request):
 
     if request_json and 'inputText' in request_json:
         inputText = request_json['inputText']
+
+        # Process and clean the input data
+        parsed_data = (str(inputText)).replace('"', "").replace("'", "").replace(",", "").replace("\n", "")
         print(f"Received request for inputText: {inputText}")
 
-        vertexai.init(project=PROJECT_ID, location=LOCATION)
+        vertexai.init(project=PROJECT_ID)
         model = TextGenerationModel.from_pretrained("text-bison@001")
         parameters = {
             "temperature": 0.2, # Control the randomness of the generated text
@@ -35,7 +38,7 @@ def text_summarizer(request):
             "top_p": 0.8, # Set a nucleus sampling threshold
             "top_k": 40 # Set a top-k sampling threshold
         }
-        summary_response = model.predict(f"Make a short summary : {inputText}",**parameters)
+        summary_response = model.predict(f"Make a short summary : {parsed_data}",**parameters)
         print(f"PaLM Text Bison Model response: {summary_response.text}")
     else:
         summary_response = 'No text provided.'
