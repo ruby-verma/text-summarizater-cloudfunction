@@ -11,7 +11,7 @@ This application demonstrates a Cloud Function written in Python that initialize
 Your Cloud Function requires access to two environment variables:
 
 - `GCP_PROJECT` : This is your project Project ID.
-- `GCP_REGION` : This is the region where your Cloud Function will be deployed. For e.g., us-central1.
+- `GCP_REGION` : This is the region where your Cloud Function will be deployed. For e.g., asia-south1.
 
 These variables are required for the Vertex AI initialization. The specific code line from the `main.py` function is shown here:
 `vertexai.init(project=PROJECT_ID, location=LOCATION)`
@@ -19,7 +19,7 @@ These variables are required for the Vertex AI initialization. The specific code
 In Cloud Shell, execute the following commands:
 ```bash
 export GCP_PROJECT='<Your GCP Project Id>'  # Change this
-export GCP_REGION='us-central1'             # If you change this, make sure region is supported by Model Garden. When in doubt, keep this.
+export GCP_REGION='asia-south1'             # If you change this, make sure region is supported by Model Garden. When in doubt, keep this.
 ```
 
 These variables can be set via the following [instructions](https://cloud.google.com/functions/docs/configuring/env-var) via any of the following ways:
@@ -42,10 +42,10 @@ Assuming that you have a copy of this project on your local machine with `gcloud
    --region=$GCP_REGION \
    --source=. \
    --entry-point=textSummarizer \
-   --trigger-http \
    --set-env-vars=GCP_PROJECT=$GCP_PROJECT,GCP_REGION=$GCP_REGION \
-   --allow-unauthenticated
-   --max-instances=1
+   --trigger-http \
+   --allow-unauthenticated \
+   --max-instances=30
    ```
 
 ## Invoking the Cloud Function
