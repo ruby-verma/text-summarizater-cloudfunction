@@ -56,6 +56,6 @@ You can call this Cloud Function directly because it is deployed with an HTTP tr
 curl -m 70 -X POST https://$GCP_REGION-$GCP_PROJECT.cloudfunctions.net/text-summarizer-function \
 -H "Content-Type: application/json" \
 -d '{
-  "inputText": "Vipassana is an ancient mindfulness meditation technique. It involves observing your thoughts and emotions as they are, without judging or dwelling on them. Though more studies are needed, research to date has found that Vipassana can reduce stress and anxiety, which may have benefits for substance use."
+  "inputText": "With FlutterFlow's visual builder, we were able to quickly and efficiently bring our ideas to life-from in-app e-commerce to custom chats and social features. It has allowed us to build with no limitations due to the ability to add custom code whenever needed. Thanks to FlutterFlow, we've been able to rapidly iterate, refine and deploy, which is key to gathering user feedback, and creating a product people actually want!"
 }'
 ```
